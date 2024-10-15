@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Shower</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #f0f8ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .flower {
+      position: absolute;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://i.pinimg.com/originals/cd/37/fd/cd37fd0136f4f2c2a0395ba231f39f5a.png'); /* Replace with your flower image URL */
+      background-size: cover;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Create a flower element and animate it
+  function createFlower() {
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    
+    // Randomize size, position, animation duration, and delay
+    flower.style.left = Math.random() * 100 + 'vw';
+    flower.style.width = flower.style.height = Math.random() * 20 + 10 + 'px';
+    flower.style.animationDuration = Math.random() * 3 + 5 + 's';
+    flower.style.animationDelay = Math.random() * 5 + 's';
+    
+    document.body.appendChild(flower);
+    
+    // Remove flower element after animation
+    flower.addEventListener('animationend', () => {
+      flower.remove();
+    });
+  }
+
+  // Continuously generate flowers at intervals
+  setInterval(createFlower, 50);
+</script>
+
+</body>
+</html>
