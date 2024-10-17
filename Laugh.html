@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny GUI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .container {
+            background-color: #ffeb3b;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #funnyMessage {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #jokeButton {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #f44336;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        #jokeButton:hover {
+            background-color: #d32f2f;
+            transform: scale(1.1);
+        }
+
+        .animate-bounce {
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate-bounce">
+        <div id="funnyMessage">Click the button to see something funny!</div>
+        <button id="jokeButton" onclick="showFunnyMessage()">Make me laugh!</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Why did the scarecrow win an award? Because he was outstanding in his field!",
+            "I'm reading a book on anti-gravity. It's impossible to put down!",
+            "Parallel lines have so much in common. It's a shame they’ll never meet.",
+            "Did you hear about the mathematician who’s afraid of negative numbers? He'll stop at nothing to avoid them!",
+            "Why don’t scientists trust atoms? Because they make up everything!"
+        ];
+
+        function showFunnyMessage() {
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            const funnyMessageElement = document.getElementById('funnyMessage');
+            funnyMessageElement.innerText = message;
+
+            // Randomize background color
+            const colors = ['#ffeb3b', '#4caf50', '#2196f3', '#f44336', '#9c27b0'];
+            document.querySelector('.container').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
