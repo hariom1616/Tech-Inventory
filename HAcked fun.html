@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limitless Opening Box GUI</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+            background-color: #2980b9;
+        }
+
+        .new-box {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            background-color: #e74c3c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box span {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" onclick="openNewBox(this)">
+    <span>Open Me</span>
+</div>
+
+<script>
+    function openNewBox(element) {
+        const newBox = document.createElement("div");
+        newBox.className = "box new-box";
+        newBox.innerHTML = "<span>Refresh Your Page, Server HAcked!</span>";
+        newBox.onclick = function(event) {
+            event.stopPropagation();
+            openNewBox(this);
+        };
+        element.appendChild(newBox);
+    }
+</script>
+
+</body>
+</html>
