@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limitless Opening Box GUI</title>
     <style>
+        :root {
+            --main-color: #3498db;
+            --hover-color: #2980b9;
+            --new-box-color: #e74c3c;
+            --text-color: white;
+        }
+
         body {
             display: flex;
             align-items: center;
@@ -21,8 +28,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #3498db;
-            color: white;
+            background-color: var(--main-color);
+            color: var(--text-color);
             cursor: pointer;
             position: relative;
             transition: transform 0.3s ease, background-color 0.3s ease;
@@ -30,7 +37,7 @@
 
         .box:hover {
             transform: scale(1.1);
-            background-color: #2980b9;
+            background-color: var(--hover-color);
         }
 
         .new-box {
@@ -39,7 +46,7 @@
             height: 80%;
             top: 10%;
             left: 10%;
-            background-color: #e74c3c;
+            background-color: var(--new-box-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -52,19 +59,24 @@
 </head>
 <body>
 
-<div class="box" onclick="openNewBox(this)">
+<div class="box" aria-label="Opening Box" role="button" onclick="openNewBox(this)">
     <span>Open Me</span>
 </div>
 
 <script>
+    let boxCount = 1; // Counter for opened boxes
+
     function openNewBox(element) {
         const newBox = document.createElement("div");
         newBox.className = "box new-box";
-        newBox.innerHTML = "<span>Refresh Your Page, Server HAcked!</span>";
+        newBox.innerHTML = `<span>Box ${++boxCount} opened!</span>`;
+        newBox.setAttribute("aria-label", `Opening Box ${boxCount}`);
         newBox.onclick = function(event) {
             event.stopPropagation();
             openNewBox(this);
         };
+
+        // Append the new box inside the clicked element
         element.appendChild(newBox);
     }
 </script>
