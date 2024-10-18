@@ -7,58 +7,50 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #e9ecef;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            flex-direction: column;
         }
         .quiz-container {
-            background-color: #ffffff;
+            background-color: #fff;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
             width: 100%;
-            max-width: 600px;
-            transition: transform 0.3s ease;
         }
         .quiz-container h1 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #343a40;
+            color: #333;
         }
         .question {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .question h2 {
             margin-bottom: 10px;
             font-size: 1.2em;
-            color: #495057;
+            color: #555;
         }
         .options label {
             display: block;
             margin-bottom: 10px;
-            font-size: 1em;
-            color: #495057;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            padding: 8px;
-            border-radius: 5px;
         }
         .options input {
             margin-right: 10px;
-        }
-        .options label:hover {
-            background-color: #f8f9fa;
         }
         .result {
             margin-top: 20px;
             padding: 10px;
             border-radius: 5px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             text-align: center;
+            transition: all 0.3s ease;
         }
         .correct {
             background-color: #d4edda;
@@ -72,19 +64,18 @@
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            font-size: 1.1em;
-            background-color: #007bff;
-            color: #ffffff;
+            font-size: 1em;
+            cursor: pointer;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #0056b3;
-            transform: translateY(-2px);
         }
-        @media (max-width: 600px) {
+        @media (max-width: 500px) {
             .quiz-container {
                 padding: 20px;
             }
@@ -162,7 +153,7 @@
         // Display result
         const resultDiv = document.getElementById('result');
         if (score === 3) {
-            resultDiv.innerHTML = 'Congratulations! You got all the answers correct!';
+            resultDiv.innerHTML = '🎉 Congratulations! You got all the answers correct! 🎉';
             resultDiv.className = 'result correct';
         } else {
             resultDiv.innerHTML = `You got ${score}/3 correct. Try again!`;
