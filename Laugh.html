@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funny GUI</title>
+    <meta name="description" content="A fun and interactive webpage that delivers random jokes with a click of a button. Have a laugh and brighten your day!">
+    <title>Funny Joke Generator - Laugh Now!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,27 +15,30 @@
 
         .container {
             background-color: #ffeb3b;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 12px;
             display: inline-block;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.5s ease, transform 0.5s ease;
         }
 
         #funnyMessage {
-            font-size: 1.5em;
+            font-size: 1.7em;
             color: #333;
             margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         #jokeButton {
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 12px 25px;
+            font-size: 1.1em;
             color: #fff;
             background-color: #f44336;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         #jokeButton:hover {
@@ -51,7 +55,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-15px);
             }
         }
     </style>
@@ -72,13 +76,23 @@
         ];
 
         function showFunnyMessage() {
+            // Select a random message
             const message = messages[Math.floor(Math.random() * messages.length)];
             const funnyMessageElement = document.getElementById('funnyMessage');
-            funnyMessageElement.innerText = message;
 
-            // Randomize background color
+            // Update the message text and make it visible
+            funnyMessageElement.innerText = message;
+            funnyMessageElement.style.opacity = 1;
+
+            // Randomize background color with smoother transition
             const colors = ['#ffeb3b', '#4caf50', '#2196f3', '#f44336', '#9c27b0'];
             document.querySelector('.container').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Add a slight shake effect for fun
+            document.querySelector('.container').style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                document.querySelector('.container').style.transform = 'scale(1)';
+            }, 200);
         }
     </script>
 </body>
