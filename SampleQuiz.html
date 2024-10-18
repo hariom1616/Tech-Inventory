@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Trivia Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 20px;
+            padding: 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-container h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h2 {
+            margin-bottom: 10px;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Fun Trivia Quiz</h1>
+
+    <div class="question" id="question1">
+        <h2>1. What is the capital of France?</h2>
+        <div class="options">
+            <label><input type="radio" name="q1" value="Paris"> Paris</label><br>
+            <label><input type="radio" name="q1" value="London"> London</label><br>
+            <label><input type="radio" name="q1" value="Berlin"> Berlin</label><br>
+            <label><input type="radio" name="q1" value="Madrid"> Madrid</label>
+        </div>
+    </div>
+
+    <div class="question" id="question2">
+        <h2>2. Which planet is known as the Red Planet?</h2>
+        <div class="options">
+            <label><input type="radio" name="q2" value="Mars"> Mars</label><br>
+            <label><input type="radio" name="q2" value="Venus"> Venus</label><br>
+            <label><input type="radio" name="q2" value="Jupiter"> Jupiter</label><br>
+            <label><input type="radio" name="q2" value="Saturn"> Saturn</label>
+        </div>
+    </div>
+
+    <div class="question" id="question3">
+        <h2>3. What is the tallest mountain in the world?</h2>
+        <div class="options">
+            <label><input type="radio" name="q3" value="Everest"> Mount Everest</label><br>
+            <label><input type="radio" name="q3" value="K2"> K2</label><br>
+            <label><input type="radio" name="q3" value="Kangchenjunga"> Kangchenjunga</label><br>
+            <label><input type="radio" name="q3" value="Makalu"> Makalu</label>
+        </div>
+    </div>
+
+    <button onclick="submitQuiz()">Submit Quiz</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function submitQuiz() {
+        let score = 0;
+
+        // Check question 1
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        if (q1 && q1.value === 'Paris') {
+            score++;
+        }
+
+        // Check question 2
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        if (q2 && q2.value === 'Mars') {
+            score++;
+        }
+
+        // Check question 3
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        if (q3 && q3.value === 'Everest') {
+            score++;
+        }
+
+        // Display result
+        const resultDiv = document.getElementById('result');
+        if (score === 3) {
+            resultDiv.innerHTML = 'Congratulations! You got all the answers correct!';
+            resultDiv.className = 'result correct';
+        } else {
+            resultDiv.innerHTML = `You got ${score}/3 correct. Try again!`;
+            resultDiv.className = 'result incorrect';
+        }
+    }
+</script>
+
+</body>
+</html>
