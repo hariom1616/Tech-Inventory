@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flower Shower</title>
+  <meta name="description" content="A beautiful animation of flowers gently falling down the screen, creating a relaxing and calming effect.">
+  <title>Flower Shower - Relaxing Falling Flower Animation</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: #f0f8ff;
+      background: linear-gradient(to bottom, #e0f7fa, #f0f8ff); /* Added gradient background for a softer look */
       font-family: Arial, sans-serif;
     }
 
@@ -21,11 +22,12 @@
       background-size: cover;
       opacity: 0.8;
       animation: fall linear infinite;
+      pointer-events: none; /* Flowers don't interfere with clicks */
     }
 
     @keyframes fall {
       to {
-        transform: translateY(100vh);
+        transform: translateY(100vh) rotate(360deg); /* Added rotation for a more dynamic fall */
       }
     }
   </style>
@@ -53,7 +55,7 @@
   }
 
   // Continuously generate flowers at intervals
-  setInterval(createFlower, 50);
+  setInterval(createFlower, 100); // Slowed down the interval for a more relaxed feel
 </script>
 
 </body>
