@@ -6,34 +6,59 @@
     <title>Fun Trivia Quiz</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .quiz-container {
-            background-color: #fff;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s ease;
         }
         .quiz-container h1 {
             text-align: center;
+            margin-bottom: 20px;
+            color: #343a40;
         }
         .question {
             margin-bottom: 20px;
         }
         .question h2 {
             margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #495057;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: #495057;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 8px;
+            border-radius: 5px;
         }
         .options input {
             margin-right: 10px;
+        }
+        .options label:hover {
+            background-color: #f8f9fa;
         }
         .result {
             margin-top: 20px;
             padding: 10px;
             border-radius: 5px;
             font-size: 1.2em;
+            text-align: center;
         }
         .correct {
             background-color: #d4edda;
@@ -47,8 +72,28 @@
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            font-size: 1em;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 20px;
+            }
+            .quiz-container h1 {
+                font-size: 1.5em;
+            }
+            button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -60,9 +105,9 @@
     <div class="question" id="question1">
         <h2>1. What is the capital of France?</h2>
         <div class="options">
-            <label><input type="radio" name="q1" value="Paris"> Paris</label><br>
-            <label><input type="radio" name="q1" value="London"> London</label><br>
-            <label><input type="radio" name="q1" value="Berlin"> Berlin</label><br>
+            <label><input type="radio" name="q1" value="Paris"> Paris</label>
+            <label><input type="radio" name="q1" value="London"> London</label>
+            <label><input type="radio" name="q1" value="Berlin"> Berlin</label>
             <label><input type="radio" name="q1" value="Madrid"> Madrid</label>
         </div>
     </div>
@@ -70,9 +115,9 @@
     <div class="question" id="question2">
         <h2>2. Which planet is known as the Red Planet?</h2>
         <div class="options">
-            <label><input type="radio" name="q2" value="Mars"> Mars</label><br>
-            <label><input type="radio" name="q2" value="Venus"> Venus</label><br>
-            <label><input type="radio" name="q2" value="Jupiter"> Jupiter</label><br>
+            <label><input type="radio" name="q2" value="Mars"> Mars</label>
+            <label><input type="radio" name="q2" value="Venus"> Venus</label>
+            <label><input type="radio" name="q2" value="Jupiter"> Jupiter</label>
             <label><input type="radio" name="q2" value="Saturn"> Saturn</label>
         </div>
     </div>
@@ -80,9 +125,9 @@
     <div class="question" id="question3">
         <h2>3. What is the tallest mountain in the world?</h2>
         <div class="options">
-            <label><input type="radio" name="q3" value="Everest"> Mount Everest</label><br>
-            <label><input type="radio" name="q3" value="K2"> K2</label><br>
-            <label><input type="radio" name="q3" value="Kangchenjunga"> Kangchenjunga</label><br>
+            <label><input type="radio" name="q3" value="Everest"> Mount Everest</label>
+            <label><input type="radio" name="q3" value="K2"> K2</label>
+            <label><input type="radio" name="q3" value="Kangchenjunga"> Kangchenjunga</label>
             <label><input type="radio" name="q3" value="Makalu"> Makalu</label>
         </div>
     </div>
