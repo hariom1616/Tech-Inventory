@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fun and interactive webpage that delivers random jokes with a click of a button. Have a laugh and brighten your day!">
+    <meta name="description" content="Click to get a random, funny joke and brighten your day with humor!">
     <title>Funny Joke Generator - Laugh Now!</title>
     <style>
+        /* Body styling for basic appearance */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -13,6 +14,7 @@
             margin-top: 100px;
         }
 
+        /* Styling the main joke container */
         .container {
             background-color: #ffeb3b;
             padding: 30px;
@@ -20,8 +22,11 @@
             display: inline-block;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: background-color 0.5s ease, transform 0.5s ease;
+            max-width: 400px;
+            width: 90%;
         }
 
+        /* Styling for the joke text */
         #funnyMessage {
             font-size: 1.7em;
             color: #333;
@@ -30,6 +35,7 @@
             transition: opacity 0.5s ease;
         }
 
+        /* Styling for the button */
         #jokeButton {
             padding: 12px 25px;
             font-size: 1.1em;
@@ -41,15 +47,18 @@
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
+        /* Button hover effect for better interactivity */
         #jokeButton:hover {
             background-color: #d32f2f;
             transform: scale(1.1);
         }
 
+        /* Animation for container bounce effect */
         .animate-bounce {
             animation: bounce 1s ease infinite;
         }
 
+        /* Keyframes for bounce animation */
         @keyframes bounce {
             0%, 100% {
                 transform: translateY(0);
@@ -61,12 +70,16 @@
     </style>
 </head>
 <body>
+    <!-- Main container with joke display and button -->
     <div class="container animate-bounce">
-        <div id="funnyMessage">Click the button to see something funny!</div>
+        <!-- Joke message with aria-live for screen readers -->
+        <div id="funnyMessage" aria-live="polite">Click the button to see something funny!</div>
+        <!-- Button to trigger the joke display -->
         <button id="jokeButton" onclick="showFunnyMessage()">Make me laugh!</button>
     </div>
 
     <script>
+        // Array of jokes to be displayed randomly
         const messages = [
             "Why did the scarecrow win an award? Because he was outstanding in his field!",
             "I'm reading a book on anti-gravity. It's impossible to put down!",
@@ -75,16 +88,17 @@
             "Why don’t scientists trust atoms? Because they make up everything!"
         ];
 
+        // Function to display a random joke
         function showFunnyMessage() {
-            // Select a random message
+            // Select a random joke from the array
             const message = messages[Math.floor(Math.random() * messages.length)];
             const funnyMessageElement = document.getElementById('funnyMessage');
 
-            // Update the message text and make it visible
+            // Update joke text and make it visible
             funnyMessageElement.innerText = message;
             funnyMessageElement.style.opacity = 1;
 
-            // Randomize background color with smoother transition
+            // Change container color randomly
             const colors = ['#ffeb3b', '#4caf50', '#2196f3', '#f44336', '#9c27b0'];
             document.querySelector('.container').style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             
