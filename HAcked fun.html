@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Limitless Opening Box GUI</title>
+    <title>Limitless Recursive Box Interface</title>
     <style>
         :root {
             --main-color: #3498db;
@@ -33,6 +33,7 @@
             cursor: pointer;
             position: relative;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            overflow: hidden; /* Prevents content overflow from recursive boxes */
         }
 
         .box:hover {
@@ -50,6 +51,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s ease;
         }
 
         .box span {
@@ -72,11 +74,11 @@
         newBox.innerHTML = `<span>Box ${++boxCount} opened!</span>`;
         newBox.setAttribute("aria-label", `Opening Box ${boxCount}`);
         newBox.onclick = function(event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevents recursive event bubbling
             openNewBox(this);
         };
 
-        // Append the new box inside the clicked element
+        // Appends new box inside the clicked box
         element.appendChild(newBox);
     }
 </script>
