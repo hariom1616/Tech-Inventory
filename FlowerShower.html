@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A beautiful animation of flowers gently falling down the screen, creating a relaxing and calming effect.">
-  <title>Flower Shower - Relaxing Falling Flower Animation</title>
+  <meta name="description" content="A relaxing animation of flowers gently falling across the screen, providing a calming and visually pleasing experience.">
+  <title>Relaxing Flower Fall Animation</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #e0f7fa, #f0f8ff); /* Added gradient background for a softer look */
+      background: linear-gradient(to bottom, #e0f7fa, #f0f8ff); /* Soft gradient background */
       font-family: Arial, sans-serif;
     }
 
@@ -22,41 +22,39 @@
       background-size: cover;
       opacity: 0.8;
       animation: fall linear infinite;
-      pointer-events: none; /* Flowers don't interfere with clicks */
+      pointer-events: none;
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(360deg); /* Added rotation for a more dynamic fall */
+      0% {
+        transform: translateX(0) translateY(0) rotate(0);
+      }
+      100% {
+        transform: translateX(calc(20vw - 10vw * random())) translateY(100vh) rotate(720deg);
       }
     }
   </style>
 </head>
 <body>
+  <script>
+    function random() {
+      return Math.random();
+    }
 
-<script>
-  // Create a flower element and animate it
-  function createFlower() {
-    const flower = document.createElement('div');
-    flower.classList.add('flower');
-    
-    // Randomize size, position, animation duration, and delay
-    flower.style.left = Math.random() * 100 + 'vw';
-    flower.style.width = flower.style.height = Math.random() * 20 + 10 + 'px';
-    flower.style.animationDuration = Math.random() * 3 + 5 + 's';
-    flower.style.animationDelay = Math.random() * 5 + 's';
-    
-    document.body.appendChild(flower);
-    
-    // Remove flower element after animation
-    flower.addEventListener('animationend', () => {
-      flower.remove();
-    });
-  }
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.style.left = `${Math.random() * 100}vw`;
+      flower.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random fall speed between 2-5s
+      flower.style.animationDelay = `${Math.random() * 5}s`; // Random start delay up to 5s
+      document.body.appendChild(flower);
 
-  // Continuously generate flowers at intervals
-  setInterval(createFlower, 100); // Slowed down the interval for a more relaxed feel
-</script>
+      flower.addEventListener("animationend", () => {
+        flower.remove(); // Remove flower once it reaches the bottom
+      });
+    }
 
+    setInterval(createFlower, 300); // New flower every 300ms
+  </script>
 </body>
 </html>
