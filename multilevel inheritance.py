@@ -1,13 +1,17 @@
-class grandparent:
-    def gdisplay(self):
+class GrandParent:
+    def display(self):
         print("Grand Parent")
-class parent(grandparent):
-    def pdisplay(self):
+
+class Parent(GrandParent):
+    def display(self):
+        super().display()
         print("Parent")
-class child(parent):
-    def cdisplay(self):
-        print("child")
-c=child()
-c.gdisplay()
-c.pdisplay()
-c.cdisplay()
+
+class Child(Parent):
+    def display(self):
+        super().display()
+        print("Child")
+
+# Create an instance of Child and display the hierarchy
+c = Child()
+c.display()
